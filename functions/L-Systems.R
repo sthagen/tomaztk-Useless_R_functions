@@ -1,11 +1,11 @@
 ##########################################
 # 
-# L-System drawing  for ggplot2 
+# L-System drawing for Turtle Graphics
 # Random walk
 #
 # Series:
-# Little Useless-useful R functions #17
-# Created: January , 2021
+# Little Useless-useful R functions #20
+# Created: February 16, 2021
 # Author: Tomaz Kastrun
 # Blog: tomaztsql.wordpress.com
 # V.1.0
@@ -14,34 +14,82 @@
 #
 ###########################################
 
-library(turtle)
+library(TurtleGraphics)
 
 
-let x, y; // the current position of the turtle
-let currentangle = 0; // which way the turtle is pointing
-let step = 20; // how much the turtle moves with each 'F'
-let angle = 90; // how much the turtle turns with a '-' or '+'
-
-
-let thestring = 'A'; // "axiom" or start of the string
-let numloops = 5; // how many iterations to pre-compute
-let therules = []; // array for rules
-therules[0] = ['A', '-BF+AFA+FB-']; // first rule
-therules[1] = ['B', '+AF-BFB-FA+']; // second rule
-
-let whereinstring = 0; 
-  
-setup <- function() {
-  createCanvas(710, 400);
-  background(255);
-  stroke(0, 0, 0, 255);
-  
-  // start the x and y position at lower-left corner
-  x = 0;
-  y = height-1;
-  
-  // COMPUTE THE L-SYSTEM
-  for (let i = 0; i < numloops; i++) {
-    thestring = lindenmayer(thestring);
+# common function
+turtlebump <- function(i, j) {
+  if (i==0) {
+    turtle_forward(10)
+  } else {
+    turtlebump(i-1, j)
+    turtle_left(60)
+    turtlebump(i-1, j)
+    turtle_right(60)
+    turtle_right(60)
+    turtlebump(i-1, j)
+    turtle_left(60)
   }
 }
+
+
+set.seed(2908)
+turtle_init(600, 500, "clip")
+turtle_hide()
+i <- 8
+j <- 500
+turtle_do({
+    turtle_up()
+    turtle_left(90)
+    turtle_forward(120)
+    turtle_forward(120)
+    turtle_right(60)
+    turtle_right(60)
+    turtle_right(60)
+    turtle_down()
+    turtlebump(i,j)
+  })
+
+###########################################
+###########################################
+### Randomised L-System
+###########################################
+###########################################
+
+random_turtle <- function(){
+    
+    f <- ""
+    single_com <- function(){
+      list_com <- c("turtle_left(","turtle_right(")
+      angle <- sample(1:120, 1, TRUE)
+      com <- sample(list_com,1,TRUE)
+      return(paste0(com, angle, ")\n"))
+    }
+    
+    comm1 <- "set.seed(2908)
+    turtle_init(600, 500, 'clip')
+    turtle_hide()
+    i <- 8
+    j <- 500
+    turtle_do({"
+    
+    for (i in 1:10){
+      sc <- single_com()
+      #sc2 <- single_com2()
+      i <- i + 1
+      f <- paste(f, sc, collapse = NULL)
+      #print(f)
+      comm2 <<- f
+    }
+    
+    comm3 <- "
+    turtlebump(i,j)
+    })"
+    
+    fin <- paste0(comm1, comm2, comm3)
+    eval(parse(text=fin))
+
+}
+
+#run random function
+random_turtle()
