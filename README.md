@@ -39,7 +39,8 @@ your everyday R use. That's it :-) And nothing more.</span>
   - R Version ([blog post](https://tomaztsql.wordpress.com/2021/02/03/little-useless-useful-r-functions-r-version/))
   - R Poem for Valentine ([blog post](https://tomaztsql.wordpress.com/2021/02/08/little-useless-useful-r-functions-useless-r-poem-for-valentine/))
   - Pipe (%>%) for ggplot2 ([blog post](https://tomaztsql.wordpress.com/2021/02/12/little-useless-useful-r-functions-use-pipe-in-ggplot2/))
-  - L-Systems ([blog post]())
+  - L-Systems ([blog post](https://tomaztsql.wordpress.com/2021/02/17/little-useless-useful-r-functions-using-l-systems-for-useless-writing/))
+  - Letter frequency in numbers ([blog post](https://tomaztsql.wordpress.com/2021/03/22/little-useless-useful-r-functions-letter-frequency-in-a-vector-of-numbers/))
 
 
 ## Cloning the repository
@@ -88,7 +89,6 @@ Thanks to these wonderful community people making and helping this useless R fun
 </table>
 
 
-
 ## Contact
 Feel free to get in touch for new useful-useless functions.
 
@@ -129,7 +129,8 @@ Feel free to get in touch for new useful-useless functions.
 <a href="https://tomaztsql.files.wordpress.com/2021/02/screenshot-2021-02-12-at-06.11.49.png"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/02/screenshot-2021-02-12-at-06.11.49.png"/>
 </a>
 
-
+<a href="https://tomaztsql.files.wordpress.com/2021/03/screenshot-2021-03-20-at-07.53.59.png"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/03/screenshot-2021-03-20-at-07.53.59.png"/>
+</a>
 
 <div>
 
@@ -137,7 +138,6 @@ Feel free to get in touch for new useful-useless functions.
 # Vignettes
 
 #### General examples
-
 
 
 # ToDo
