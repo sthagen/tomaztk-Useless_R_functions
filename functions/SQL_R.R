@@ -48,6 +48,8 @@ rm(new,lett,name,val)
 
 cdf[6,]
 
+iris <- iris
+
 # using functions
 
 sqldf("select [Sepal.Width] from iris
@@ -118,7 +120,5 @@ sqldf("select val from cdf
 # limit, order
 sqldf("select val from cdf order by val DESC limit 1")
 
-
-# scope
 
 
