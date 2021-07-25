@@ -16,7 +16,7 @@
 computelinks <- function(links){
   nr <- nrow(links)
   nc <- ncol(links)
-  tot = 0
+  tot <- 0
   for (i in 1:(nr-1)) {
     for (j in (i+1):nr) {
       for (k in 1:nc)
@@ -25,12 +25,6 @@ computelinks <- function(links){
   }
   r <- tot/(nr*(nr-1)/2)
  print(r)
-}
-
-
-sim_Slow <- function(nr,nc){
-  cal <-  matrix(sample(0:1, (nr*nc), replace=TRUE), nrow=nr)
-  system.time(computelinks(cal))
 }
 
 
@@ -49,26 +43,34 @@ computelinks_fast <- function(links){
 }
 
 
-sim_Fast <- function(nr,nc){
-  cal <- matrix(sample (0:1, (nr*nc), replace=TRUE), nrow=nr)
-  print(system.time(computelinks_fast(cal)))
+sim_Fast <- function(mat){
+  print(system.time(computelinks_fast(mat)))
+}
+
+sim_Slow <- function(mat){
+  system.time(computelinks(mat))
 }
 
 ###################################
 ### Comparison of both calculations
 ###################################
 
-sim_Slow(1000,1000)
-sim_Fast(1000,1000)
+# will produce same end results; different timings
+nr <- 500
+nc <- 500
+cal <-  matrix(sample(0:1, (nr*nc), replace=TRUE), nrow=nr)
 
+
+sim_Slow(cal)
+sim_Fast(cal)
 
 
 ###################################
 ### Library parallel
-### WIP
+### WIP with same calculations
 ###################################
 
-
+# install.packages("parallel")
 library(parallel)
 
 doichunk <- function (ichunk) {
@@ -78,9 +80,8 @@ doichunk <- function (ichunk) {
     tmp <- lnks[(i+1):nr,] %∗% lnks[i,]
     tot <- tot + sum(tmp)
   }
-  tot
+  return(tot)
 }
-
 
 mutoutpar <- function(cls,lnks) {
   nr <- nrow(lnks)
@@ -90,15 +91,5 @@ mutoutpar <- function(cls,lnks) {
   Reduce(sum,tots)/nr
 }
 
+nworkers <- #integer
 makeCluster(nworkers)
-cls <- initmc(4)
-length(cls)
-cl2 <- initcls(c("pc28" ,"pc29"))
-clusterExport(cls,"lnks")
-
-lnks <<- matrix(sample(0:1,(nr*nc),replace=TRUE),nrow=nr)
-clusterExport(cls, "lnks" , envir=environment())
-
-ichunks <- 1:(nr-1)
-tots <- clusterApply(cls, ichunks, doichunk)
-sum(tots)
