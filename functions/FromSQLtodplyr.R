@@ -1,62 +1,166 @@
 
 ############################
 #
+# Converts SQL to dplyr
 #
-# Converts T-SQL to dplyr
-#
-#
-#
-#
+# ToDO: smallBig Caps
+#       concatenate function
 ############################
 
+
 library(dplyr)
-library(dbplyr)
 
 
-## From dplyr to SQL
-translate_sql(x == 1 && (y < 2 || z > 3))
-translate_sql(cummean(G), vars_order = "year")
-translate_sql(rank(), vars_group = "ID")
+query <- "SELECT Species,Sepal.Length FROM iris WHERE Species = 'setosa' AND Sepal.Length >= 4.6"
+query <- "SELECT * FROM iris"
+query <- "SELECT * FROM iris WHERE Species = 'setosa'"
 
-con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
-flights <- copy_to(con, nycflights13::flights)
-airports <- copy_to(con, nycflights13::airports)
+#result <- "iris %>% filter(Species == 'setosa', Sepal.Length >= 4.6) %>% select(Species,Sepal.Length)"
+#eval(parse(text=result))
 
 
-
-flights %>%
-  select(contains("delay")) %>%
-  show_query()
-
-
-######################
-## From  SQL to dplyr?
-######################
-
-
-q <- "SELECT * FROM flights"
-
-toDplyr <- function(query){
-  print(query)
-  # parse query
-    
+ArrangeSelectList <- function(q){
+  
+  # create df
+  # sapply the text
+  qq <<- as.data.frame(sapply(strsplit(q, " "), function(x) print(x)))
+  colnames(qq) <<- "qt"
+  
+  SQL_Reserved_words <- c("SELECT", "FROM","WHERE","IS","GROUP BY", "AS", "ORDER BY", "TOP", "OR", "ELSE", "CASE", "IN", "NULL", "NOT", "CASE",
+                          "BY", "HAVING BY", "LIKE", "OVER", "PERCENT", "WHEN", "THEN", "CONVERT", "CAST", "DISTINCT", "EXISTS", "AND", "BETWEEN")
+  qq$yn <- 0
+  qq$level <- 0
+  id_pos <- match(SQL_Reserved_words, qq$qt)
+  print(qq[id_pos,])
 }
 
-toDplyr(q)
 
-sample_query <- "SELECT `Sepal.Width`, `Species` FROM iris WHERE `Species` = `setosa` and `Petal.Length` >= 1.3 ORDER BY `Sepal.Width` ASC LIMIT 10"
+toDplyr <- function(query){
+  #print(query)
+  # parse query
+  #get table name
+  # from FROM onward
+  #sub(".*(FROM*)", "\\1", query)
+  
+  # from FROM onward without word FROM
+  #sub(".*(FROM*)", "", query)
+  
+  # between FROM and WHERE
+  table <- sub("WHERE.*","",sub(".*(FROM*)", "", query))
+  
+  # Select list
+  select_list <- trimws(sub("FROM.*","",sub(".*(SELECT*)", "", query)))
+  
+      # Get between select and from
+      a <- gregexpr("SELECT", st)
+      b <- gregexpr("FROM", st)
+      pos_a <- a[[1]] + 6
+      pos_b<- b[[1]] - 1
+      sell <- substr(st, pos_a,pos_b)
+      df <- data.frame(v=t(do.call(rbind,strsplit(sell, split = ","))))
+      
+      listReservedWords <- data.frame(rs=c("SUM", "AVG", "COUNT", "*", "AS", "MIN","MAX")) 
+    
+      
+      lrw <- data.frame(rs=c("SUM", "AVG", "COUNT", "* ", "MIN","MAX")) 
+      df$tr <- FALSE
+      
+      for (i in 1:nrow(lrw)) {
+        wo <- lrw$rs[i]
+        #print(wo)
+        for (j in 1:nrow(df)){
+          if (df$tr[j] == FALSE) {
+            df$tr[j] <- grepl(wo, df$v[j]) #df$v[j])
+          }
+        }
+      }
+      
+      #bringing together the select list and group by
+      min(which(df$tr==!TRUE)) ## check if all are FALSE
+      # if true; result = 1
+      # if false; Inf
+      min(which(df$tr==!FALSE)) ## check if all are TRUE
+      # if true; result = 1
+      # if false; inf
+      
+      min(which(df$tr==!FALSE)) & min(which(df$tr==!TRUE))
+      # if true = result: TRUE both exists
+      
+      
+      if (df$tr == TRUE && df$tr == FALSE) { print("T&F")
+        # add summorize and group by
+        
+      }
+      
+      if ((df$tr == FALSE) ) { print("F")
+        # add select
+        
+      }
+      if (df$tr == TRUE) { print("T")
+        # add summorize
+        
+      }
+      
+      
+      df
+      
+      
+      
+      #grepl(listReservedWords$rs[1],df$v[3])
+  
+      FindMatch <- function(v1, v2)  {
+        v1[match(v1,v2, nomatch=0)]
+      }
+  
+  # where
+  where_clause <- sub(".*(WHERE*)","", query)
+  
+  # single to double = sign
+  where_clause <- gsub(" = ", "==", where_clause)
+  where_clause <- gsub("AND", ",", where_clause)  
+  
+  ## construct dplyr
+  if ((select_list == "*")  & (!is.null(grep('WHERE', query))) )  { res <- paste0(table) }
+  #if (is.null(grep('WHERE', query))) { res <- paste0(table) }
+  
+  if (select_list != "*" & !is.null(grep('WHERE', query)))   {
+    
+    res <- paste0(table, ' %>% ', 'select( ', select_list, ' ) %>% filter( ', where_clause ,' )')
+  }
+  
+  if (select_list == "*" & !is.null(grep('WHERE', query)))   {
+    res <- paste0(table, '  %>% filter( ', where_clause ,' )')
+  }
+  
+  
+  #eval(parse(text=res))
+  
+  return(res)
+}
 
-dp <- "iris_subset <- iris %>%
-          select(`Sepal.Width`, `Species`,`Petal.Length`) %>%
-          filter(`Species` == \"setosa\" & `Petal.Length` >= 1.3 ) %>%
-          arrange(desc(`Sepal.Width`)) %>%
-          top_n(10)"
 
-print(paste0("Dplyr query: ", dp))
+toDplyr(query)
 
 
-eval(parse(text=dp))
+# group_by()
+# summarise()
+# arrange()
+# filter()
+# mutate()
 
-iris_subset
 
-rm(iris_subset)
+
+
+
+######
+
+q <- as.character ("SELECT * FROM iris WHERE species = 'setosa' AND  Petal.Lenght => 1.3")
+
+insertToDataFrame(q)
+
+#check data.frame
+q
+
+
+
+

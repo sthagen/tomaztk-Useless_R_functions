@@ -46,6 +46,13 @@ your everyday R use. That's it :-) And nothing more.</span>
   - Inserting variable values into strings ([blog post](https://tomaztsql.wordpress.com/2021/07/09/little-useless-useful-r-functions-inserting-variable-values-into-strings/))
   - Colourful ggplot line graphs ([blog post](https://tomaztsql.wordpress.com/2021/07/16/little-useless-useful-r-functions-colourful-ggplot-line-graphs/))
   - Drawing calendar([blog post](https://tomaztsql.wordpress.com/2021/07/19/little-useless-useful-r-functions-drawing-calendar/))
+  - Useless Year progress bar with spinning cursor ([blog post](https://tomaztsql.wordpress.com/2021/09/13/little-useless-useful-r-functions-year-progress-bar/))
+  - Useless analog and digital clock ([blog post](https://tomaztsql.wordpress.com/2021/09/16/little-useless-useful-r-functions-useless-analog-and-digital-clocks/))
+  - Animated showcase of plot function ([blog post](https://tomaztsql.wordpress.com/2021/10/18/little-useless-useful-r-functions-useless-animated-showcase-of-plot-function/))
+  - Interface for learning irregular verbs ([blog post](https://tomaztsql.wordpress.com/2021/10/22/little-useless-useful-r-functions-useless-interface-for-learning-irregular-verbs/))
+  - Interactive Voronoi diagram generator ([blog post](https://tomaztsql.wordpress.com/2021/11/01/little-useless-useful-r-functions-interactive-voronoi-diagram-generator-using-r-and-x11/))
+  - Mastermind board game for R ([blog post](https://tomaztsql.wordpress.com/2022/01/07/little-useless-useful-r-functions-mastermind-board-game-for-r/))
+- Making boxplot from a picture ([blog post](https://tomaztsql.wordpress.com/2022/02/02/little-useless-useful-r-functions-making-boxplot-from-a-picture/))
 
 ## Cloning the repository
 You can follow the steps below to clone the repository.
@@ -145,8 +152,24 @@ Feel free to get in touch for new useful-useless functions.
 </a>
 <a href="https://tomaztsql.files.wordpress.com/2021/07/screenshot-2021-07-18-at-07.00.51.png"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/07/screenshot-2021-07-18-at-07.00.51.png"/>
 </a>
-  
-<div>
+ 
+<a href="https://tomaztsql.files.wordpress.com/2021/09/progressbaranimater.gif"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/09/progressbaranimater.gif"/>
+</a>
+<a href="https://tomaztsql.files.wordpress.com/2021/09/bigdigitalclockr.gif"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/09/bigdigitalclockr.gif"/>
+</a>
+  <a href="https://tomaztsql.files.wordpress.com/2021/10/showcase-2.gif"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/10/showcase-2.gif"/>
+</a>
+    <a href="https://tomaztsql.files.wordpress.com/2021/10/screenshot-2021-10-21-at-23.12.17.png"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/10/screenshot-2021-10-21-at-23.12.17.png"/>
+</a>
+ <a href="https://tomaztsql.files.wordpress.com/2021/10/voronoi.gif"><img width="45%" src="https://tomaztsql.files.wordpress.com/2021/10/voronoi.gif"/>
+</a> 
+ <a href="https://tomaztsql.files.wordpress.com/2022/01/image-2.png"><img width="45%" src="https://tomaztsql.files.wordpress.com/2022/01/image-2.png"/>
+</a> 
+ <a href="https://tomaztsql.files.wordpress.com/2022/02/image-1.png"><img width="45%" src="https://tomaztsql.files.wordpress.com/2022/02/image-1.png"/>
+</a> 
+ </div>
+
+
 
 
 # Vignettes
@@ -158,4 +181,4 @@ Feel free to get in touch for new useful-useless functions.
   - Possibly change some functionalities to work properly on UNIX / WIN machines
     - `x11()` and `CLI export`
   - A vignette finished; write proper feature details!
-  - R package!
+  - Create useless R package.
