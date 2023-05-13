@@ -33,77 +33,8 @@ mm <- matrix(let, nrow = 8, ncol=4, byrow = TRUE,
               )
 
 
-SMSconverter <- function(tt){
-  st <- NULL
-  # check if input string are letters
-  if (!grepl("[^A-Za-z]", tt) == TRUE){
-    for (i in 1:nchar(tt)){
-      lt <- substr(tt,i,i)
-      if (lt != " "){
-        rn <- substr(rownames(which(mm == lt, arr.ind = T)),2,2)
-        rep <- which(mm == lt, arr.ind = T)[2]
-        st <- c(st, replicate(rep, rn))
-      } else {
-        st <- c(st, "0")
-      }
-    }
-    #print(st)
-  }
-  
-  # check if input string are numbers
-  #if (!grepl("\\D", tt) == TRUE){
-  if (grepl("[^A-Za-z]", tt) == TRUE){
-    for (i in 1:length(tt)){
-      ena <- tt[i]
-      dva <- tt[i+1]
-      if (ena != dva & !is.na(dva) & ena != " "){
-        num <- substr(rownames(which(mm == ena, arr.ind = T)),2,2)
-        times_num  <- which(mm == ena, arr.ind = T)[2]
-        st <- c(st, replicate(times_num, num))
-      }
-      if (ena == dva & !is.na(dva) & ena != " "){
-        num <- substr(rownames(which(mm == dva, arr.ind = T)),2,2)
-        times_num  <- which(mm == dva, arr.ind = T)[2]
-        st <- c(st, replicate(times_num, num))
-      }
-      if (ena == " "){
-        st <- c(st, "9")
-      }
-     # print(st)
-    }
-  }
-  print(paste0(st, collapse=""))
-}
 
+# function test
 
-
-SMSconverter("hello")
-SMSconverter("4433555555666")
-
-
-# test
-text = "hell oo "
-brd <- unlist(strsplit(text, ""))
-st <- NULL
-
-for (i in 1:length(brd)){
-  ena <- brd[i]
-  dva <- brd[i+1]
-  if (ena != dva & !is.na(dva) & ena != " "){
-    num <- substr(rownames(which(mm == ena, arr.ind = T)),2,2)
-    times_num  <- which(mm == ena, arr.ind = T)[2]
-    st <- c(st, replicate(times_num, num))
-  }
-  if (ena == dva & !is.na(dva) & ena != " "){
-    num <- substr(rownames(which(mm == dva, arr.ind = T)),2,2)
-    times_num  <- which(mm == dva, arr.ind = T)[2]
-    st <- c(st, replicate(times_num, num))
-  }
-  if (ena == " "){
-    st <- c(st, "9")
-  }
-  #print(st)
-}
-
-
-paste0(st, collapse="")
+SMSconverter("text")
+SMSconverter("833998")
