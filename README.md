@@ -58,6 +58,7 @@ your everyday R use. That's it :-) And nothing more.</span>
 - Transforming dataframe to markdown table ([blog post](https://tomaztsql.wordpress.com/2023/03/26/little-useless-useful-r-functions-transforming-dataframe-to-markdown-table/))
 - Old phone converted from text to numbers ([blog post](https://tomaztsql.wordpress.com/2023/05/07/little-useless-useful-r-functions-old-phone-converted-from-text-to-numbers/))
 - Goldbach's conjecture and sieve of sundaram ([blog post](https://tomaztsql.wordpress.com/2023/08/12/little-useless-useful-r-functions-goldbachs-conjecture-and-sieve-of-sundaram/))
+- Pretty dataframe definition ([Git merge by rachelostic](https://github.com/tomaztk/Useless_R_functions/blob/main/functions/pretty_dataframe_definitions.R))
 
 ## Cloning the repository
 You can follow the steps below to clone the repository.
@@ -100,6 +101,7 @@ Thanks to these wonderful community people making and helping this useless R fun
     <td align="center"><a href="https://github.com/retooooo"><img src="https://avatars3.githubusercontent.com/u/22014291?s=400&v=4" width="100px;" alt="retooooo"/><br /><sub><b>retooooo</b></sub></a><br /></td>
 <td align="center"><a href="https://github.com/mrdwab"><img src="https://avatars1.githubusercontent.com/u/802388?s=400&u=d1138f870ef3f4f53a01df1f712dc9843549dd18&v=4" width="100px;" alt="mrdwab"/><br /><sub><b>mrdwab</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/TFellet"><img src="https://avatars.githubusercontent.com/u/1519839?v=4" width="100px;" alt="TFellet"/><br /><sub><b>TFellet</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/rachelostic"><img src="https://avatars.githubusercontent.com/u/65781290?v=4" width="100px;" alt="rachelostic"/><br /><sub><b>rachelostic</b></sub></a><br /></td>
 
 </tr>
 
