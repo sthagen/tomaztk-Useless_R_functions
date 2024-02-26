@@ -44,11 +44,23 @@ colnames(df) <- c("i", "catalan", "factorial")
 df$i <- as.integer(df$i)
 df$catalan <- as.integer(df$catalan)
 df$factorial <- as.integer(df$factorial)
+df$factorialLog <- log(df$factorial)
+df$catalanLog <- log(df$catalan)
 
 
 ggplot(df, aes(x=i)) + 
   geom_line(aes(y = catalan), color = "darkgreen") + 
   geom_line(aes(y = factorial), color="steelblue") 
+
+
+ggplot(df, aes(x=i, y=catalanLog)) + geom_bar(stat="identity")
+                                                 
+                                                 
+  geom_line(aes(y = catalanLog), color = "darkgreen") + 
+  geom_line(aes(y = factorialLog), color="steelblue") 
+
+
+
 
 # or
 df %>%
