@@ -26,7 +26,7 @@ library(ggplot2)
 bias_explorer <- function(seed = 2908, n_links = 25) {
   set.seed(seed)
   
-  # Some psych effects
+  # Some psych effects from RL
   biases <- c(
     "Confirmation Bias", "Anchoring Bias", "Availability Heuristic", 
     "Dunning-Kruger Effect", "Survivorship Bias", "Recency Bias",
@@ -42,7 +42,6 @@ bias_explorer <- function(seed = 2908, n_links = 25) {
     "Found in fortune cookie", "Might be science", "Feels statistically valid"
   )
 
-  
   edges <- data.frame(
     from = sample(biases, n_links, replace = TRUE),
     to = sample(biases, n_links, replace = TRUE),
@@ -74,5 +73,8 @@ bias_explorer <- function(seed = 2908, n_links = 25) {
   
 }
 
+##################
 # Run the function
+##################
+
 bias_explorer()

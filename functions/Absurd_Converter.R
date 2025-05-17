@@ -1,7 +1,6 @@
 getwd()
 setwd("/Users/tomazkastrun/Documents/tomaztk_github/Useless_R_functions/functions")
 
-
 ##########################################
 # 
 # Absurd converter with statistical 
@@ -14,19 +13,15 @@ setwd("/Users/tomazkastrun/Documents/tomaztk_github/Useless_R_functions/function
 # Blog: tomaztsql.wordpress.com
 # V.1.0
 
-# Changelog: 
-#        
 ###########################################
 
 
 library(ggplot2)
 library(gganimate)
 
-
 unit_converter_confuser <- function(values, unit_from = "kilograms", chaos = 0.3,
                                     seed = 42, report_path = "confuser_report.md") {
   set.seed(seed)
-  
   
   # Absurdity of useful and useless mappings
   base_unit_map <- list(
