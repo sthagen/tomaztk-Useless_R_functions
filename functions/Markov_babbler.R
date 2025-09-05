@@ -13,7 +13,6 @@
 #        
 ###########################################
 
-
 library(dplyr)
 library(stringr)
 library(tidyr)
@@ -26,7 +25,7 @@ markov_babbler <- function(text, order = 2, n = 50, by_word = TRUE) {
   tokens <- tokens[tokens != ""]
   
   #add the removal of full stops,....
-  # token <- 
+  token <- c('I', 'I am', 'to', 'all', 'Oh')
   
   df <- data.frame(
     from = sapply(seq_len(length(tokens) - order), function(i) paste(tokens[i:(i + order - 1)], collapse = " ")),
@@ -79,83 +78,6 @@ result <- markov_babbler(text, n=30)
 cat(result$text)  
 print(result$plot) 
 
-
-
-
-
-text <- '"Potem ko so v soboto za večino držav in ozemelj po svetu začele veljati desetodstotne dodatne carine na uvoz blaga v ZDA, so ob polnoči po krajevnem času v Washingtonu za izbrano skupino zunanjetrgovinskih partneric, ki po prepričanju ameriškega predsednika Donalda Trumpa in njegove administracije v zunanji trgovini najbolj izkoriščajo ZDA, začele veljati še dodatne carinske stopnje. Te se gibljejo med 11 in 50 odstotki. Za Evropsko unijo je stopnja dodatnih carin po novem 20-odstotna.
-Neverjetna 104-odstotna carinska stopnja za kitajske izdelke
-
-Najvišje carine so ZDA uvedle za Kitajsko – po 20-odstotnih, uvedenih marca, bi se te danes morale zvišati še za 34 odstotkov, a ker se je Kitajska odzvala s 34-odstotnimi carinami na ameriško blago, jih je Trump dvignil še za 50 odstotkov. Skupno tako od danes znašajo kar 104 odstotke.
-
-Ukrep je močno pretresel in osupnil svet. Čeprav je Trump carine označil za vzajemne, se vrstijo opozorila, da nimajo ničesar z vzajemnostjo. Carinske stopnje so daleč od povprečnih carinskih stopenj na ameriški uvoz in predstavljajo preprosto delež primanjkljaja v blagovni menjavi ZDA s posamezno partnerico v skupnem uvozu iz te partnerice.
-
-Kljub šoku in razburjenju je večina ameriških zunanjetrgovinskih partneric, to velja tudi za Evropsko unijo, izrazila željo po pogajanjih in izogibanju nadaljnjemu stopnjevanju trgovinske vojne.
-
-Izjema je Kitajska, carine v vrednosti 25 odstotkov na nekatere ameriške avtomobile je napovedala tudi Kanada.
-Kitajska obljublja odločno ukrepanje
-
-V Pekingu so napovedali, da bo Kitajska sprejela "odločne ukrepe" za zaščito lastnih interesov. Kitajsko finančno ministrstvo je nato sporočilo, da povračilne carine na uvoz ameriškega blaga s četrtkom zvišujejo s 34 na 84 odstotkov.
-
-Predstavnik kitajskega zunanjega ministrstva Lin Džjan je poudaril, da ima kitajsko ljudstvo neodtujljivo pravico do razvoja. "Še naprej bomo sprejemali odločne ukrepe za zaščito svojih zakonitih pravic in interesov," je dejal.
-
-Kitajsko ministrstvo za trgovino je medtem sporočilo, da ima država "trdno voljo" za boj v trgovinski vojni z Washingtonom. "Kitajska bo s trdno voljo in številnimi sredstvi odločno sprejela protiukrepe in se borila do konca, če bodo ZDA vztrajale pri nadaljnjem stopnjevanju gospodarskih in trgovinskih omejevalnih ukrepov," je povzela sporočilo ministrstva.
-
-V drugem največjem gospodarstvu na svetu sicer menijo, da lahko trgovinske in gospodarske spore z ZDA rešijo z enakopravnim dialogom. "Kitajska in ZDA lahko razlike na gospodarskem in trgovinskem področju rešijo z enakopravnim dialogom in vzajemno koristnim sodelovanjem," je zapisano v beli knjigi, ki so jo pripravili v Pekingu.
-
-Peking je pred tem v torek napovedal, da bo šel v trgovinski vojni z ZDA "do konca". Kot so poudarili, "pritiski, grožnje in izsiljevanje niso pravi način za spopadanje s Kitajsko".
-
-Iz Washingtona sicer prihajajo mešani signali. Trump kot pogoj za pogajanja postavlja, da se blagovna menjava s partnericami tako ali drugače izravna ali preide v presežek.
-
-Kot je poročal Andrej Stopar, dopisnik RTV Slovenija iz Washingtona, je v torek Trump dejal: "Veliko držav prihaja, ker se želijo dogovoriti. Če bi jim pred dvema letoma, tremi ali petimi leti rekel, da bodo skušale skleniti takšne dogovore, bi se nam smejale. Zdaj pa prosijo za sprejem. Čudovito se bo izteklo. Pobirali bomo po dve milijardi dolarjev na dan. To je veliko denarja."
-
-Ameriški finančni minister Scott Bessent pa druge države opozarja, naj ne uvajajo protiukrepov, ker bo sledilo stopnjevanje. "50, 60, morda 70 držav nas je nagovorilo. April in maj, morda tudi junij bodo zelo naporni. Japonska je zelo pomembna vojaška, obenem pa tudi gospodarska zaveznica. Z ZDA ima veliko skupne zgodovine. Ker so pristopili zelo hitro, mislim, da bi morala imeti Japonska prednost," je dejal.
-
-Prav ta pogajalski interes je v torek vplival na gibanje borznih indeksov v ZDA. Potem ko so se po novinarski konferenci Trumpa in izraelskega premierja Benjamina Netanjahuja nekoliko umirili, so v torek znova padali. Seth Sutel, novinar tiskovne agencije AP, je dejal: "Največji zalogaj je seveda Kitajska, ki ostaja težava. Čeprav v trgovinske pogovore z ZDA vstopata Japonska in Južna Koreja, Kitajska ne. Opolnoči je začel veljati debel sveženj carin. Ta konflikt še ni razrešen. Dokler ne bo, lahko vsi zgolj ugibamo, kaj se bo dogajalo z borzo."
-
-Medijska hiša Bloomberg ocenjuje, da so v nekaj dneh na svetovni ravni zaradi ameriških carin podjetja, ki kotirajo na borzah, izgubila skupaj 10 trilijonov dolarjev, je dodal Stopar.
-Carine na carine na carine
-
-ZDA so doslej že uvedle tudi več t. i. sektorskih carin. Med drugim so tako sredi marca začele veljati 25-odstotne carine na uvoz jekla in aluminija, prejšnji teden pa dodatne 25-odstotne carine za avtomobile. Za to blago nove Trumpove carine ne veljajo. Prav tako za zdaj ne veljajo za farmacevtske izdelke, baker, čipe, les, zlato, energijo in nekatere rudnine, ki niso na voljo v ZDA.
-Rusija opozarja na nespoštovanje trgovinskih pravil
-
-Obsežne carine ameriškega predsednika kažejo na njegovo nespoštovanje temeljev mednarodne trgovine, ocenjujejo v Moskvi, kjer obenem izražajo zaskrbljenost zaradi svetovne trgovinske vojne.
-
-Trumpove carine kršijo temeljna pravila Svetovne trgovinske organizacije (WTO) in dokazujejo prepričanje Washingtona, "da ni več zavezan normam mednarodnega trgovinskega prava", je v pogovoru z novinarji dejala tiskovna predstavnica ruskega zunanjega ministrstva Marija Zaharova.
-
-Rusija, ki je od začetka vojne v Ukrajini poglobila gospodarske in politične odnose s Kitajsko, je od vrnitve Trumpa v Belo hišo previdna glede kritik na račun politik ameriškega predsednika. Vendar so nekateri pristojni v Moskvi v zadnjih dneh izrazili zaskrbljenost zaradi padanja cen nafte, ki so ključnega pomena za ruske javne finance.
-
-"Vsak šok svetovnem gospodarstvu, ki grozi z upočasnitvijo gospodarske rasti in splošnim zmanjšanjem potrošnje, negativno vpliva na številne globalne procese," je dejala Zaharova.
-
-Tudi guvernerka ruske centralne banke Elvira Nabiullina je na zaslišanju pred člani ruskega parlamenta trgovinsko vojno označila za veliko tveganje in dejala, da v svetovni trgovini trenutno prihaja do tektonskih sprememb. Po njenih besedah je težko oceniti, kam bodo te spremembe vodile svetovno gospodarstvo in kako bo to vplivalo na Rusijo.
-Veljajo še višje dodatne carine za uvoz blaga v ZDA
-Azijske borze po uveljavitvi dodatnih ameriških carin v rdečem
-
-Uveljavitev še višjih carin na uvoz blaga v ZDA je osrednje indekse na azijskih borzah znova obarvala večinoma rdeče. Na vodilni azijski borzi v Tokiu je indeks Nikkei, ki ga izračunavajo na osnovi vrednosti 225 najpomembnejših delnic, nazadoval za 3,56 odstotka, na 31.836,49 točke.
-
-Znižal se je tudi indeks borze v Sydneyju All Ordinaries, in sicer za 1,85 odstotka. V Seulu je osrednji borzni indeks Kospi izgubil 1,77 odstotka, tečaji delnic v Tajvanu pa so v povprečju padli za pet odstotkov. V Singapurju je indeks STI 2,35 odstotka nižje kot v torek.
-
-Trgovanje na kitajskih borzah je medtem neenotno. V Hongkongu je šel indeks Hang Seng doslej navzdol za 0,68 odstotka, v Šanghaju pa je indeks Shanghai Composite 0,72 odstotka nad izhodiščem.
-Padli so tudi evropski indeksi
-
-Tudi indeksi na evropskih borzah so se po torkovem odboju, ki je sledil večdnevnim občutnim padcem, znova spustili pod gladino. Indeks najpomembnejših podjetij v območju evra Eurostoxx 50 je trenutno na 2,40 odstotka nižji ravni kot ob koncu trgovanja v torek.
-
-Londonski indeks FTSE 100 je 2,15 odstotka pod izhodiščem, pariški CAC 40 pa 2,69 odstotka pod njim. Frankfurtski DAX je ob začetku trgovanja padel 2,34 odstotka pod gladino. Milanski indeks FTSE MIB izgublja 2,09 odstotka, dunajski ATX 1,72 odstotka. Züriški SMI medtem pada po 1,67-odstotni stopnji.
-
-Tečaj evra se zvišuje. Na borzi v Frankfurtu je treba trenutno za en evro odšteti 1,1067 dolarja, kar je odstotek več kot v torek.
-Cene nafte na štiriletnem dnu
-
-Cene surove nafte so padle na najnižjo raven v več kot štirih letih. Trge skrbi, da se bo povpraševanje po črnem zlatu zmanjšalo zaradi stopnjevanja svetovne trgovinske vojne, v ospredju katere sta najmočnejši svetovni gospodarstvi ZDA in Kitajska, in da bodo na trgu presežki nafte, je na spletni strani poročal Reuters.
-
-Za 159-litrski sod zahodnoteksaške nafte z dobavnim rokom maja je bilo treba popoldne po singapurskem času odšteti 57,12 dolarja, kar je 2,46 dolarja manj kot v torek. Severnomorska nafta brent za dobavo v juniju pa se je pocenila za 2,38 dolarja, na 60,44 dolarja.
-
-Cene za obe vrsti nafte sta bili s tem na najnižji stopnji po februarju 2021.
-
-Poleg tega se je skupina razširjenih proizvajalk nafte OPEC+ pretekli teden odločila, da bo maja povečala črpanje nafte za 411.000 sodov dnevno, kar bo po mnenju analitikov verjetno potisnilo trg v presežek."'
-
-result <- markov_babbler(text, n=20)
-cat(result$text)    
-print(result$plot)
 
 
 #sample of Grimm story (in Slovenian Language)
@@ -232,3 +154,72 @@ spila vino, ki ga je prinesla Rdeča kapica. Babica se je tako dobro okrepčala.
 result <- markov_babbler(text, n=20)
 print(result$plot)
 
+
+
+text = "Once upon a time thee was a sweet little girl. Everyone who saw her liked her, but most of all her 
+grandmother, who did not know what to give the child next. Once she gave her a little cap made of red velvet.
+Because it suited her so well, and she wanted to wear it all the time, she came to be known as Little Red 
+Riding Hood. One day her mother said to her:  Come Little Red Riding Hood. Here is a piece of cake and a 
+bottle of wine. Take them to your grandmother. She is sick and weak, and they will do her well. Mind your 
+manners and give her my greetings. Behave yourself on the way, and do not leave the path, or you might fall 
+down and break the glass, and then there will be nothing for your sick grandmother.
+Little Red Riding Hood promised to obey her mother. The grandmother lived out in the woods, a half hour from 
+the village. When Little Red Riding Hood entered the woods a wolf came up to her. She did not know what a wicked 
+animal he was, and was not afraid of him. Good day to you, Little Red Riding Hood. - Thank you, wolf. - 
+Where are you going so early, Little Red Riding Hood? - To grandmother. - And what are you carrying under your
+apron? - Grandmother is sick and weak, and I am taking her some cake and wine. We baked yesterday, and they
+should give her strength. - Little Red Riding Hood, just where does your grandmother live? - Her house is a 
+good quarter hour from here in the woods, under the three large oak trees. There  a hedge of hazel bushes there. You must know the place,  said Little Red Riding Hood. The wolf thought to himself:  Now there is a tasty bite for me. Just how are you going to catch her?  Then he said:  Listen, Little Red Riding Hood, haven t you seen the beautiful flowers that are blossoming in the woods? Why don t you go and take a look? And I don t believe you can hear how beautifully the birds are singing. You are walking along as though you were on your way to school in the village. It is very beautiful in the woods. 
+Little Red Riding Hood opened her eyes and saw the sunlight breaking through the trees and how the ground was 
+covered with beautiful flowers. She thought:  If a take a bouquet to grandmother, she will be very pleased. 
+Anyway, it is still early, and I ll be home on time.  And she ran off into the woods looking for flowers. 
+Each time she picked one she thought that she could see an even more beautiful one a little way off, and 
+she ran after it, going further and further into the woods. But the wolf ran straight to the grandmother  
+house and knocked on the door.  Who  there?  -  Little Red Riding Hood. I m bringing you some cake and wine.
+Open the door for me.  -  Just press the latch,  called out the grandmother.  I m too weak to get up.  
+The wolf pressed the latch, and the door opened. He stepped inside, went straight to the grandmother  
+bed, and ate her up. Then he took her clothes, put them on, and put her cap on his head. He got into her 
+bed and pulled the curtains shut.
+Little Red Riding Hood had run after flowers, and did not continue on her way to grandmother until she 
+had gathered all that she could carry. When she arrived, she found, to her surprise, that the door was 
+open. She walked into the parlor, and everything looked so strange that she thought:  Oh, my God, why am 
+I so afraid? I usually like it at grandmother .  Then she went to the bed and pulled back the curtains. 
+Grandmother was lying there with her cap pulled down over her face and looking very strange.  Oh, 
+grandmother, what big ears you have!  -  All the better to hear you with.  -  Oh, grandmother, what big 
+eyes you have!  -  All the better to see you with.  -  Oh, grandmother, what big hands you have!  - 
+   All the better to grab you with!  -  Oh, grandmother, what a horribly big mouth you have!  -  All 
+the better to eat you with!  And with that he jumped out of bed, jumped on top of poor Little Red Riding 
+Hood, and ate her up.
+As soon as the wolf had finished this tasty bite, he climbed back into bed, fell asleep, and began to 
+snore very loudly. A huntsman was just passing by. He thought it strange that the old woman was snoring 
+so loudly, so he decided to take a look. He stepped inside, and in the bed there lay the wolf that he 
+had been hunting for such a long time.  He has eaten the grandmother, but perhaps she still can be saved. 
+I won t shoot him,  thought the huntsman. So he took a pair of scissors and cut open his belly. He had cut 
+only a few strokes when he saw the red cap shining through. He cut a little more, and the girl jumped out 
+and cried:  Oh, I was so frightened! It was so dark inside the wolf  body!  And then the grandmother came
+out alive as well. Then Little Red Riding Hood fetched some large heavy stones. They filled the wolf  body 
+with them, and when he woke up and tried to run away, the stones were so heavy that he fell down dead.
+The three of them were happy. The huntsman took the wolf  pelt. The grandmother ate the cake and drank the 
+wine that Little Red Riding Hood had brought. And Little Red Riding Hood thought to herself:  As long as I 
+live, I will never leave the path and run off into the woods by myself if mother tells me not to. 
+
+They also tell how Little Red Riding Hood was taking some baked things to her grandmother another time, 
+when another wolf spoke to her and wanted her to leave the path. But Little Red Riding Hood took care and 
+went straight to grandmother . She told her that she had seen the wolf, and that he had wished her a good 
+day, but had stared at her in a wicked manner.  If we hadn t been on a public road, he would have eaten me 
+up,  she said.  Come,  said the grandmother.  Let  lock the door, so he can t get in.  Soon afterward the 
+wolf knocked on the door and called out:  Open up, grandmother. It  Little Red Riding Hood, and I m bringing 
+you some baked things.  They remained silent, and did not open the door. The wicked one walked around the 
+house several times, and finally jumped onto the roof. He wanted to wait until Little Red Riding Hood went 
+home that evening, then follow her and eat her up in the darkness. But the grandmother saw what he was up 
+to. There was a large stone trough in front of the house.  Fetch a bucket, Little Red Riding Hood,  she said.
+ Yesterday I cooked some sausage. Carry the water that I boiled them with to the trough.  Little Red Riding
+Hood carried water until the large, large trough was clear full. The smell of sausage arose into the wolf 
+nose. He sniffed and looked down, stretching his neck so long that he could no longer hold himself, and he 
+began to slide. He slid off the roof, fell into the trough, and drowned. And Little Red Riding Hood returned
+home happily and safely. 
+"
+
+
+result <- markov_babbler(text, n=20)
+print(result$plot)
