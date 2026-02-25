@@ -306,8 +306,7 @@ TypingTest <- function(mode = "code",
 }
 
 
-
-#######
+######
 ## Run the function!
 ######
 
